@@ -117,7 +117,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--sun);outline-of
 .empty{color:var(--muted);font-size:13px;padding:16px 8px}
 
 /* left card */
-.card{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:112px;bottom:92px;width:360px;z-index:6;border-radius:20px;display:flex;flex-direction:column;overflow:hidden}
+.card{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:auto;bottom:92px;max-height:calc(100% - 204px);width:360px;z-index:6;border-radius:20px;display:flex;flex-direction:column;overflow:hidden}
 .c-head{padding:20px 20px 14px;display:grid;gap:12px;position:relative}
 .c-top{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:center;padding-right:30px}
 .tile{width:56px;height:56px;border-radius:14px;background:color-mix(in srgb,var(--c) 16%,var(--panel));display:grid;place-items:center;color:var(--c)}
@@ -208,18 +208,49 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--sun);outline-of
   .tour{transform:translateX(-50%);bottom:136px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* --- v6 --- */
+.slogans{display:grid;gap:2px}
+.ix-head .slogans h2{font-size:27px}
+.brand .big.who{display:flex;align-items:center;gap:10px;font-size:30px;color:var(--brand-name);letter-spacing:.08em}
+.brand .big.who small{font-size:12px;font-weight:400;color:var(--brand-sub);letter-spacing:.02em;margin-left:4px}
+.brand .avatar{width:52px;height:52px;border-color:var(--brand-ink)}
+.prow{grid-template-columns:auto auto 1fr auto}
+.prow .no{padding-right:3px}
+.prow .tt{padding-left:10px}
+.subbtn .leaf{margin-left:-4px}
+.irow .leaf{margin-left:-7px}
+.lcard li .leaf{margin-left:-6px}
+.lcard .no{gap:3px}
+.tooltoggle{display:none}
+.tooltoggle svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round}
+@media (max-width:860px){
+  .brand{max-width:calc(100% - 120px)}
+  .brand .big.who{font-size:20px;gap:8px}
+  .brand .avatar{width:38px;height:38px;border-width:2px}
+  .brand{grid-template-columns:auto;gap:4px}
+  .brand .big.who{grid-row:auto}
+  .brand .name{font-size:14px;letter-spacing:.12em}
+  .tooltoggle{display:flex;align-items:center;gap:6px;position:absolute;z-index:6;top:14px;left:max(10px,env(safe-area-inset-left,0px));border-radius:999px;padding:9px 14px;font-size:13px;color:var(--ink)}
+  .tooltoggle[aria-expanded="true"]{background:var(--dark-pill);color:var(--dark-pill-ink);border-color:transparent}
+  #app:not(.tools-open) .bottombar{display:none}
+  .card,.index{bottom:max(10px,env(safe-area-inset-bottom,0px))}
+  .tools-open .card,.tools-open .index{bottom:128px}
+  .tour{bottom:24px}.tools-open .tour{bottom:136px}
+}
 </style>
 
 <div id="app">
   <canvas id="scene" role="img" aria-label="政見森林：六塊林間空地代表六項政見，遊客在林中走動採集。可改用「清單」閱讀全部政見。"></canvas>
 
   <div class="brand float">
-    <div class="big">行動服務 全力以赴</div>
+    <div class="big who"><img class="avatar" alt="許又仁" src="data:image/jpeg;base64,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"><span>許又仁<small>(土豆仁)</small></span></div>
     <div class="name">懇請唯一支持！</div>
     <div class="sub"><b>政見森林</b>・第11選區 仁德 歸仁 關廟 龍崎</div>
   </div>
 
-  <div class="bottombar">
+  <button class="tooltoggle float" id="tToggle" aria-expanded="false" aria-controls="bottombar"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="lbl">工具</span></button>
+  <div class="bottombar" id="bottombar">
     <div class="bb-row">
       <div class="seg time float" role="group" aria-label="時段">
         <button class="ico" data-time="dawn" title="清晨" aria-label="清晨"><svg viewBox="0 0 24 24"><path d="M3 18h18M6 18a6 6 0 0 1 12 0M12 6v2M5.6 9.6l1.4 1.4M18.4 9.6 17 11"/></svg><span>清晨</span></button>
@@ -247,10 +278,8 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--sun);outline-of
   <aside class="index" id="index" aria-label="政見索引">
     <div class="ix-head">
       <button class="ix-close" id="ixClose" aria-label="關閉">✕</button>
-      <div class="eyebrow who"><img class="avatar" alt="許又仁" src="data:image/jpeg;base64,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"><span>許又仁<small>(土豆仁)</small></span></div>
-      <h2>專業認真、發展新豐</h2>
+      <div class="slogans"><h2>專業認真、發展新豐</h2><h2>行動服務、全力以赴</h2></div>
       <p><span id="ixCount">6 項政見 ／ 25 個細項</span><br>選一項政見，走進它的森林風景。</p>
-      <input class="search" id="search" type="search" placeholder="搜尋政見、關鍵字…" aria-label="搜尋政見">
       <div class="ix-tabs" role="tablist">
         <button role="tab" id="tabPol" aria-selected="true">政見</button>
         <button role="tab" id="tabPrt" aria-selected="false">夥伴關係 10</button>
@@ -562,7 +591,7 @@ function render(t){const c=ctx;c.setTransform(dpr,0,0,dpr,0,0);
 /* ---------- 相機 ---------- */
 function resize(){dpr=Math.min(2,window.devicePixelRatio||1);const r=cv.getBoundingClientRect();VW=r.width;VH=r.height;cv.width=Math.round(VW*dpr);cv.height=Math.round(VH*dpr);}
 const wide=()=>VW>860;
-function insets(){const w=wide();const cardOn=!$("#card").hidden;return{L:w?356:16,Rt:w&&cardOn?392:16,T:w?(cardOn?40:110):70,Bm:w?96:(cardOn||$("#index").classList.contains("open")?VH*.55+150:140)};}
+function insets(){const w=wide();const cardOn=!$("#card").hidden;return{L:w?356:16,Rt:w&&cardOn?392:16,T:w?(cardOn?40:110):70,Bm:w?96:((cardOn||$("#index").classList.contains("open")?VH*.55:0)+($("#app").classList.contains("tools-open")?140:24))};}
 function fitTarget(){const I=insets();const aw=VW-I.L-I.Rt,ah=VH-I.T-I.Bm;const bw=B.x1-B.x0,bh=B.y1-B.y0;const z=Math.max(.3,Math.min(1.6,Math.min(aw/bw,ah/bh)));return{z,ox:I.L+aw/2-(B.x0+bw/2)*z,oy:I.T+ah/2-(B.y0+bh/2)*z};}
 function flyTo(tg){if(reduced){cam.z=tg.z;cam.ox=tg.ox;cam.oy=tg.oy;fly=null;return;}fly={t0:performance.now(),z0:cam.z,x0:cam.ox,y0:cam.oy,z1:tg.z,x1:tg.ox,y1:tg.oy};}
 function focusPlot(k){const p=POL[k];const[wx,wy]=g2w(p.gx,p.gy);const I=insets();const z=wide()?1.7:1.3;
@@ -587,7 +616,7 @@ cv.addEventListener("wheel",e=>{e.preventDefault();fly=null;const r=cv.getBoundi
 
 /* ---------- 索引 ---------- */
 let ixTab="pol",expanded=-1;
-function renderIndex(){const q=$("#search").value.trim();const body=$("#ixBody");
+function renderIndex(){const q="";const body=$("#ixBody");
   if(q){const hits=[];POL.forEach((p,k)=>{if((p.title+p.short+p.place).includes(q))hits.push({k,i:-1,t:p.title});p.items.forEach((it,i)=>{if((it[0]+it[1]).includes(q))hits.push({k,i,t:it[0]});});});
     body.innerHTML=hits.length?hits.map(h=>`<button class="hit" data-k="${h.k}" data-i="${h.i}" style="--c:${PC[h.k]}"><small>${pad(h.k+1)} ${POL[h.k].short}${h.i>=0?" · 細項 "+(h.i+1):""}</small><span>${esc(h.t)}</span></button>`).join(""):`<div class="empty">找不到「${esc(q)}」，換個關鍵字試試。</div>`;
     body.querySelectorAll(".hit").forEach(b=>b.onclick=()=>{const k=+b.dataset.k,i=+b.dataset.i;if(i>=0)openItem(k,i);else openPolicy(k);});return;}
@@ -598,7 +627,7 @@ function renderIndex(){const q=$("#search").value.trim();const body=$("#ixBody")
   body.querySelectorAll(".explore").forEach(b=>b.onclick=()=>openPolicy(+b.dataset.k));
   body.querySelectorAll(".subbtn").forEach(b=>b.onclick=()=>openItem(+b.dataset.k,+b.dataset.i));}
 function setIxTab(t){ixTab=t;$("#tabPol").setAttribute("aria-selected",t==="pol");$("#tabPrt").setAttribute("aria-selected",t==="prt");renderIndex();}
-$("#tabPol").onclick=()=>setIxTab("pol");$("#tabPrt").onclick=()=>setIxTab("prt");$("#search").addEventListener("input",renderIndex);
+$("#tabPol").onclick=()=>setIxTab("pol");$("#tabPrt").onclick=()=>setIxTab("prt");
 function toggleIndex(on){const ix=$("#index");ix.classList.toggle("open",on);$("#tIndex").setAttribute("aria-pressed",on);if(on&&!wide())$("#card").hidden=true;}
 $("#tIndex").onclick=()=>toggleIndex(!$("#index").classList.contains("open"));$("#ixClose").onclick=()=>toggleIndex(false);
 
@@ -662,6 +691,7 @@ $("#tLines").onclick=()=>{linesOn=!linesOn;syncTools();};
 $("#tPause").onclick=()=>{paused=!paused;syncTools();};
 $("#tFit").onclick=()=>{selected=-1;selItem=-1;if(cardMode!=="log")closeCard();flyTo(fitTarget());};
 $("#tLog").onclick=openLog;
+$("#tToggle").onclick=()=>{const on=$("#app").classList.toggle("tools-open");$("#tToggle").setAttribute("aria-expanded",on);$("#tToggle .lbl").textContent=on?"收起":"工具";if(!wide()&&selected<0)flyTo(fitTarget());};
 
 /* 檢視 */
 function setView(v){$("#listView").hidden=v!=="list";$("#vList").setAttribute("aria-pressed",v==="list");}
@@ -690,6 +720,7 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",themeChange
 new MutationObserver(themeChange).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
 
 function boot(){resize();buildTerrain();renderIndex();buildList();$("#ixCount").textContent=`6 項政見 ／ ${TOTAL} 個細項`;syncTools();setStatus();
+  if(!wide())toggleIndex(true);
   const f=fitTarget();cam.z=f.z;cam.ox=f.ox;cam.oy=f.oy;for(let i=0;i<30;i++)stepVisitors(.1,0);
   requestAnimationFrame(t=>{last=t;requestAnimationFrame(frame);});setTimeout(()=>$("#loader").classList.add("out"),350);}
 let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{resize();buildTerrain();if(selected>=0)focusPlot(selected);else flyTo(fitTarget());},120);});
